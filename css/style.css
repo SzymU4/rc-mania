@@ -1,48 +1,132 @@
-:root{
+/* ========== ZMIENNE ========== */
+:root {
     --neon-blue: #00f0ff;
     --bg-dark: #0a0a0a;
     --bg-nav: #111111;
     --text-light: #e0f7ff;
     --text-muted: #888888;
 }
-*{
+
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-body{
+
+body {
     font-family: 'Segoe UI', system-ui, sans-serif;
     background-color: var(--bg-dark);
     color: var(--text-light);
     min-height: 100vh;
 }
+
 /* ========== NAVBAR ========== */
-nav{
+nav {
+    background-color: var(--bg-nav);
+    padding: 0 20px;
+    position: relative;
+}
+
+.nav-top {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 40px;
     height: 65px;
-    background-color: var(--bg-nav);
     border-bottom: 2px solid var(--neon-blue);
 }
-.nav-logo{
+
+.nav-logo {
     font-size: 1.4rem;
     font-weight: 700;
     color: var(--neon-blue);
     text-decoration: none;
 }
-.nav-links{
-    display: flex;
-    gap: 30px;
-    list-style: none;
+
+/* Przycisk na telefon */
+.nav-toggle {
+    background: none;
+    border: 2px solid var(--neon-blue);
+    color: var(--neon-blue);
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    border-radius: 4px;
 }
-.nav-links a{
+
+/* linki — domyślnie schowane na mobile */
+.nav-links {
+    display: none;
+    flex-direction: column;
+    gap: 0;
+    list-style: none;
+    padding: 10px 0;
+}
+
+/* ========== NAVBAR ========== */
+@keyframes menuSlideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* klasa dodawana przez JS gdy klikniemy hamburger */
+.nav-links.open {
+    display: flex;
+    animation: menuSlideDown 0.4s ease forwards;
+}
+
+.nav-links a {
     color: var(--text-light);
     text-decoration: none;
     font-size: 0.95rem;
-    transition: color 0.3s;
+    padding: 12px 0;
+    border-top: 1px solid #222;
+    transition: color 0.10s;
+    display: block;
+    width: 100%;
 }
-.nav-links a:hover{
+
+.nav-links a:hover {
     color: var(--neon-blue);
+}
+
+/* ========== NAVBAR — tablet i desktop ========== */
+@media (min-width: 768px) {
+    nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 40px;
+        height: 65px;
+        border-bottom: 2px solid var(--neon-blue);
+    }
+
+    .nav-top {
+        height: auto;
+        border-bottom: none;
+    }
+
+    /* chowamy hamburger na dużym ekranie */
+    .nav-toggle {
+        display: none;
+    }
+
+    /* pokazujemy linki normalnie */
+    .nav-links {
+        display: flex;
+        flex-direction: row;
+        gap: 30px;
+        padding: 0;
+    }
+
+    .nav-links a {
+        border-top: none;
+        padding: 0;
+    }
 }
