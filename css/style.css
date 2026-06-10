@@ -299,6 +299,60 @@ nav {
 
 @media (min-width: 768px) and (max-width: 1024px) {
     .news-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+/* ========== O NAS ========== */
+.section-about{
+    padding: 80px 0;
+}
+.about-inner{
+    display: flex;
+    align-items: center;
+    gap: 60px;
+}
+.about-text{
+    flex: 1;
+}
+.about-photo{
+    width: 400px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 12px;
+    border: 2px solid #222;
+    transition: border-color 0.3s;
+}
+.about-photo:hover{
+    border-color: var(--neon-blue);
+}
+@media (max-width: 768px){
+    .about-inner{
+        flex-direction: column;
+    }
+    .about-photo{
+        width: 100%;
+        height: 250px;
+    }
+}
+
+/* ========== KARTY WYDARZEŃ ========== */
+.section-events {
+    padding: 50px 0;
+}
+.events-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+}
+/* ========== RESPONSYWNOŚĆ WYDARZEŃ ========== */
+@media (max-width: 768px) {
+    .events-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (min-width: 768px){
+    .events-grid {
         grid-template-columns: repeat(2, 1fr);
     }
 }
