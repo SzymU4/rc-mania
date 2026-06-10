@@ -7,6 +7,7 @@
     --text-muted: #888888;
 }
 
+/* ========== RESET ========== */
 * {
     margin: 0;
     padding: 0;
@@ -20,7 +21,7 @@ body {
     min-height: 100vh;
 }
 
-/* ========== NAVBAR ========== */
+/* ========== NAVBAR — mobile first ========== */
 nav {
     background-color: var(--bg-nav);
     padding: 0 20px;
@@ -32,7 +33,6 @@ nav {
     justify-content: space-between;
     align-items: center;
     height: 65px;
-    border-bottom: 2px solid var(--neon-blue);
 }
 
 .nav-logo {
@@ -42,7 +42,6 @@ nav {
     text-decoration: none;
 }
 
-/* Przycisk na telefon */
 .nav-toggle {
     background: none;
     border: 2px solid var(--neon-blue);
@@ -51,34 +50,29 @@ nav {
     cursor: pointer;
     font-size: 1.2rem;
     border-radius: 4px;
+    transition: background-color 0.2s;
 }
 
-/* linki — domyślnie schowane na mobile */
+.nav-toggle:hover {
+    background-color: rgba(0, 240, 255, 0.1);
+}
+
 .nav-links {
-    display: none;
-    flex-direction: column;
-    gap: 0;
     list-style: none;
-    padding: 10px 0;
+    flex-direction: column;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    border-top: 2px solid transparent;
+    transition: max-height 0.35s ease,
+                opacity 0.35s ease,
+                border-top-color 0.35s ease;
 }
 
-/* ========== NAVBAR ========== */
-@keyframes menuSlideDown {
-    from {
-        opacity: 0;
-        transform: translateY(-10px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* klasa dodawana przez JS gdy klikniemy hamburger */
 .nav-links.open {
-    display: flex;
-    animation: menuSlideDown 0.4s ease forwards;
+    max-height: 400px;
+    opacity: 1;
+    border-top-color: var(--neon-blue);
 }
 
 .nav-links a {
@@ -86,17 +80,17 @@ nav {
     text-decoration: none;
     font-size: 0.95rem;
     padding: 12px 0;
-    border-top: 1px solid #222;
-    transition: color 0.10s;
+    border-bottom: 1px solid #222;
     display: block;
     width: 100%;
+    transition: color 0.15s;
 }
 
 .nav-links a:hover {
     color: var(--neon-blue);
 }
 
-/* ========== NAVBAR — tablet i desktop ========== */
+/* ========== NAVBAR — desktop ========== */
 @media (min-width: 768px) {
     nav {
         display: flex;
@@ -109,24 +103,42 @@ nav {
 
     .nav-top {
         height: auto;
-        border-bottom: none;
     }
 
-    /* chowamy hamburger na dużym ekranie */
     .nav-toggle {
         display: none;
     }
 
-    /* pokazujemy linki normalnie */
     .nav-links {
         display: flex;
         flex-direction: row;
         gap: 30px;
+        max-height: none;
+        overflow: visible;
+        opacity: 1;
+        border-top: none;
         padding: 0;
     }
 
     .nav-links a {
-        border-top: none;
+        border-bottom: none;
         padding: 0;
+        position: relative;
+    }
+    .nav-links a::after {
+        content: '';
+        height: 2px;
+        width: 100%;
+        background-color: var(--neon-blue);
+        border-radius: 1em;
+        position: absolute;
+        bottom: -4px;
+        left: 0;
+        scale: 0;
+        transition: scale 200ms ease;
+    }
+
+    .nav-links a:hover::after {
+        scale: 1;
     }
 }
