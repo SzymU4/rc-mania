@@ -3,6 +3,7 @@
     --neon-blue: #00f0ff;
     --bg-dark: #0a0a0a;
     --bg-nav: #111111;
+    --bg-footer: #000000;
     --text-light: #e0f7ff;
     --text-muted: #888888;
 }
@@ -355,4 +356,42 @@ nav {
     .events-grid {
         grid-template-columns: repeat(2, 1fr);
     }
+}
+/* ========== STOPKA ========== */
+.site-footer{
+    padding: 50px 0 0 0;
+}
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    
+}
+.footer-col {
+    background-color: #111;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.foot-col2{
+    border-left: 1px solid #222;
+    border-right: 1px solid #222;
+}
+.foot-col2 ul{
+    list-style-type: none;
+    line-height: 2rem;
+}   
+.foot-col2 a{
+    color: var(--text-muted);
+    text-decoration: none;
+}
+.foot-col2 a:hover{
+    color: var(--text-light);
+}
+.footer-end{
+    background-color: var(--bg-footer);
+    text-align: center;
+    width: 100%;
 }
