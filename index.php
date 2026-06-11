@@ -1,3 +1,4 @@
+<?php include 'includes/db.php' ?>
 <!DOCTYPE html>
 <html lang="pl">
 
@@ -9,7 +10,7 @@
 </head>
 
 <body>
-
+    <!-- NAVBAR -->
     <nav>
         <div class="nav-top" id="up">
             <a href="index.html" class="nav-logo">🚗 RC MANIA</a>
@@ -25,6 +26,7 @@
             <li><a href="#">Kontakt</a></li>
         </ul>
     </nav>
+    <!-- HERO -->
     <section class="hero">
         <div class="hero-content">
             <h1 class="hero-title">RC MANIA TARNÓW</h1>
